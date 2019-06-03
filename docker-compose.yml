@@ -1,9 +1,6 @@
 version: '3'
 services:
   catanie:
-    ports:
-    - "4200:4200"
-    - "80:80"
     build:
       context: catanie
   catamel:
@@ -19,3 +16,7 @@ services:
   scicatingest:
     build:
       context: scicatingest
+    depends_on:
+    - mongodb
+    - catanie
+    - catamel
