@@ -1,6 +1,7 @@
 FROM node:10-alpine
 
-ENV http_proxy="http://10.0.0.160:8123"
+ENV http_proxy "http://192.168.1.1:8123"
+ENV https_proxy $http_proxy
 RUN apk update && \
     apk add git 
 
