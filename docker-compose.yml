@@ -1,0 +1,18 @@
+version: '3'
+services:
+  catanie:
+    ports:
+    - "4200:4200"
+    - "80:80"
+    build:
+      context: catanie
+  catamel:
+    restart: always
+    ports:
+    - "3001:3000"
+    build:
+      context: catamel
+    depends_on:
+    - mongodb
+  mongodb:
+    image: mongo:4.1.5
