@@ -1,1 +1,1 @@
-# perftest
+# SciCat Performance Testing
