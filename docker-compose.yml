@@ -16,3 +16,6 @@ services:
     - mongodb
   mongodb:
     image: mongo:4.1.5
+  scicatingest:
+    build:
+      context: scicatingest

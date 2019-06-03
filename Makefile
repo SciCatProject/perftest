@@ -1,6 +1,6 @@
 .PHONY: all run run-hot stop clean data
 
-all : catanie/catanie catamel/catamel 
+all : catanie/catanie catamel/catamel scicatingest/scicatingest
 	docker-compose build
 	
 catanie/catanie :
