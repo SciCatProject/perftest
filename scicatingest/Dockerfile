@@ -9,3 +9,4 @@ COPY scicatingest/ingest.ts /usr/src/app/
 COPY scicatingest/run.sh /usr/src/app/
 
 RUN npm install
+CMD ["./run.sh"]
