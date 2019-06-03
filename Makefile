@@ -9,6 +9,9 @@ catanie/catanie :
 catamel/catamel :
 	cd catamel && git clone https://github.com/SciCatProject/catamel.git
 
+scicatingest/scicatingest :
+	cd scicatingest && git clone https://github.com/garethcmurphy/scicatingest.git
+
 
 stop :
 	docker-compose down
