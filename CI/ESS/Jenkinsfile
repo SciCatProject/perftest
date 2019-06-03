@@ -2,4 +2,8 @@ node('docker') {
   stage('Checkout'){
     checkout scm
   }
+  stage('Build'){
+    sh 'make'
+    sh 'make run'
+  }
 }
