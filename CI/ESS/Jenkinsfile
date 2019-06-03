@@ -4,6 +4,8 @@ node('docker') {
   }
   stage('Build'){
     sh 'make'
+  }
+  stage('Run'){
     sh 'make run'
   }
 }
