@@ -3,11 +3,11 @@ node('docker') {
     checkout scm
   }
   stage('Fetch'){
-    sh 'cd catanie && git clone https://github.com/SciCatProject/catanie.git'
+    sh 'cd catanie && rm -rf catanie && git clone https://github.com/SciCatProject/catanie.git'
     sh 'cd ..'
-	sh 'cd catamel && git clone https://github.com/SciCatProject/catamel.git'
+	sh 'cd catamel && rm -rf catamel && git clone https://github.com/SciCatProject/catamel.git'
     sh 'cd ..'
-	sh 'cd scicatingest && git clone https://github.com/garethcmurphy/scicatingest.git'
+	sh 'cd scicatingest && rm -rf scicatingest  && git clone https://github.com/garethcmurphy/scicatingest.git'
     sh 'cd ..'
   }
   stage('Build'){
