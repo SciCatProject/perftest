@@ -1,0 +1,23 @@
+version: '3'
+services:
+  catanie:
+    build:
+      context: catanie
+  catamel:
+    restart: always
+    ports:
+    - "3001:3000"
+    build:
+      context: catamel
+    depends_on:
+    - mongodb
+  mongodb:
+    image: mongo:4.1.5
+  scicatingest:
+    command: ["./run.sh"]
+    build:
+      context: scicatingest
+    depends_on:
+    - mongodb
+    - catanie
+    - catamel
