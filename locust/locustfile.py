@@ -38,9 +38,8 @@ def shortquery(l):
             name="Query for 2 datasets in given ownerGroup"
     )
 
-def facetquery(l):
+def fullquery(l):
     # https://dacat-qa.psi.ch/api/v3/Datasets/fullquery?fields={"mode":{},"ownerGroup":["p17828"]}&limits={"skip":0,"limit":30,"order":"creationTime:desc"}
-    # https://dacat-qa.psi.ch/api/v3/Datasets/fullfacet?fields={"mode":{},"ownerGroup":["p17828"]}&facets=["type","creationTime","creationLocation","ownerGroup","keywords"]
     fields={"ownerGroup":[pgroup]}
     limits={"skip":0,"limit":30,"order":"creationTime:desc"}
     fields_json = json.dumps(fields)
@@ -50,6 +49,20 @@ def facetquery(l):
             url % (fields_json, limits_json),
             headers=l.headers,
             name="Fullquery for 30 datasets in given ownerGroup"
+    )
+
+def facetquery(l):
+    # https://dacat-qa.psi.ch/api/v3/Datasets/fullfacet?fields={"mode":{},"ownerGroup":["p17828"]}&facets=["type","creationTime","creationLocation","ownerGroup","keywords"]
+    fields={"ownerGroup":[pgroup]}
+    facets=["type","creationTime","creationLocation","ownerGroup","keywords"]
+    fields_json = json.dumps(fields)
+    facets_json = json.dumps(facets)
+    url="/api/v3/Datasets/fullquery?fields=%s&facets=%s"
+    # print("Facet Url:",url % (fields_json, facets_json))
+    l.client.get(
+            url % (fields_json, facets_json),
+            headers=l.headers,
+            name="Facetquery for 5 facets with given ownerGroup"
     )
 
 def ingest(l):
@@ -100,7 +113,7 @@ def delete(l):
 
 
 class UserBehavior(TaskSet):
-    tasks = {index: 1, query:5, shortquery:25, facetquery:5}
+    tasks = {index: 1, query:5, shortquery:25, fullquery:5, facetquery:5}
 
     def __init__(self, parent):
        super(UserBehavior, self).__init__(parent)
